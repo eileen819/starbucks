@@ -46,7 +46,6 @@
   opacity: 0;
 }
 
-
 /* NOTICE */
 
 .notice .notice-line {
@@ -135,9 +134,11 @@
   height: 693px;
   background-color: #f6f5ef;
   position: relative;
-  transition: height .4s;
+  /* 토글버튼에 의해서 프로모션 부분이 사라지는 애니메이션을 만들기 위한 부분 */
+  transition: height 0.4s;
   overflow: hidden;
 }
+/* 토글버튼에 의해서 프로모션 부분이 사라지는 애니메이션을 만들기 위한 부분: 선택자 일치선택자여야 함! */
 .notice .promotion.hide {
   height: 0;
 }
@@ -151,7 +152,7 @@
   margin-left: calc((819px * 3 + 20px) / -2);
 }
 .notice .promotion .swiper-slide {
-  opacity: .5;
+  opacity: 0.5;
   transition: opacity 1s;
   position: relative;
 }
@@ -163,7 +164,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  margin: auto; 
+  margin: auto;
 }
 .notice .promotion .swiper-pagination {
   bottom: 40px;
@@ -199,7 +200,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: .4s;
+  transition: 0.4s;
 }
 .notice .promotion .swiper-prev {
   left: 50%;
@@ -214,7 +215,6 @@
   background-color: #333;
   color: #fff;
 }
-
 
 /* REWARDS */
 .rewards {
@@ -259,12 +259,12 @@
   flex-grow: 1;
 }
 
-
 /* YOUTUBE VIDEO */
 .youtube {
   position: relative;
   height: 700px;
   background-color: #333;
+  /* youtebe__area 부분의 중간 부분만 화면에 나타나게 만들고 싶기 때문에(위/아래 일정 부분 자르기) overflow를 hidden으로 함  */
   overflow: hidden;
 }
 .youtube .youtube__area {
@@ -272,23 +272,27 @@
   background-color: orange;
   position: absolute;
   left: 50%;
+  /* margin-left는 요소의 가로 크기에서 절반의 크기 만큼 땡기기 위해서 calc() 사용 */
   margin-left: calc(1920px / -2);
   top: 50%;
+  /* margin-top은 요소의 세로 크기에서 절반의 크기 만큼 땡기기 위해서 calc()를 사용하는데 
+  이 때 정확한 세로 크기를 몰라서 가로 너비에서 16:9 비율의 세로 너비를 구한 후에 
+  -2를 곱해서 세로의 절반 크기만큼 위로 땡길 수 있게 만듦*/
   margin-top: calc(1920px * 9 / 16 / -2);
 }
-/* html을 사용하지 않고 가상요소를 사용해 요소의 크기를 제어 */
+/* html을 사용하지 않고 가상요소를 사용해 요소의 크기를 제어(사유: 스타일적인 부분만 필요하기 때문) */
 .youtube .youtube__area::before {
   content: "";
   /* 인라인요소이므로 블럭요소로 바꿔줌 */
   display: block;
   width: 100%;
   height: 0;
-  /* 영상의 16:9 비율을 만들어주기 위해 % 사용: 이 %는 부모요소?의 가로 크기에서 비율을 계산함 */
+  /* 영상의 16:9 비율을 만들어주기 위해 % 사용: 이 %는 부모요소의 가로 크기에서 비율을 계산함 */
   padding-top: 56.25%;
 }
 .youtube .youtube__cover {
   background-image: url("../images/video_cover_pattern.png");
-  background-color: rgba(0, 0, 0, .3);
+  background-color: rgba(0, 0, 0, 0.3);
   position: absolute;
   top: 0;
   left: 0;
@@ -316,7 +320,6 @@
   left: 150px;
 }
 
-
 /* SEASON PRODUCT */
 .season-product {
   background-image: url("../images/season_product_bg.jpg");
@@ -340,7 +343,6 @@
 .season-product .text-group .description {
   margin-bottom: 15px;
 }
-
 
 /* RESERVE COFFEE */
 .reserve-coffee {
@@ -390,7 +392,6 @@
   margin-bottom: 40px;
 }
 
-
 /* RESERVE STORE */
 .reserve-store {
   background-image: url("../images/reserve_store_bg.jpg");
@@ -408,6 +409,7 @@
 .reserve-store .medal {
   width: 334px;
   height: 334px;
+  /* 여기서도 크기를 명시하는 이유는 정확한 크기 명시를 통해 해당부분을 hover했을 때만 동작하게 만들기 위해서 */
   perspective: 600px;
 }
 .reserve-store .medal .front,
@@ -419,6 +421,7 @@
   transition: 1s;
 }
 .reserve-store .medal .front {
+  /* 명시적으로 0deg에서 시작함을 작성해서 다른 영향을 받는 경우가 없도록 함 */
   transform: rotateY(0deg);
 }
 .reserve-store .medal:hover .front {
@@ -437,7 +440,6 @@
   right: 0;
   margin: auto;
 }
-
 
 /* FIND STORE */
 .find-store {
@@ -458,7 +460,7 @@
 }
 .find-store .picture {
   border-radius: 50%;
-  box-shadow: 2px 2px 8px rgba(0,0,0,.5);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
   position: absolute;
 }
 .find-store .picture1 {
@@ -481,7 +483,6 @@
   margin-bottom: 20px;
 }
 
-
 /* AWARDS */
 .awards {
   background-color: #272727;
@@ -501,7 +502,7 @@
   border-radius: 50%;
   outline: none;
   color: #fff;
-  opacity: .3;
+  opacity: 0.3;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -522,7 +523,6 @@
   background-color: #fff;
   color: #333;
 }
-
 
 #to-top {
   width: 42px;
